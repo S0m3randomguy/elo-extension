@@ -1,8 +1,8 @@
 
 enum GameScore {
-    Win = 1,
-    Draw = 0.5,
-    Lose = 0
+    Win,
+    Draw,
+    Lose
 }
 
 //% color=190 weight=0 icon="\uf1ec" block="Elo"
@@ -16,6 +16,19 @@ namespace elo {
     //% blockId=elo_calculate
     //% blockSetVariable=change
     export function calculate(a: number, b: number, score: GameScore, k: number=20): number {
-        return Elo.calculate(a, b, score, k);
+        let realScore: number;
+        switch(score) {
+            case GameScore.Win:
+                realScore = 1;
+                break;
+            case GameScore.Draw:
+                realScore = 0.5;
+                break;
+            case GameScore.Lose:
+                realScore = 0;
+                break;
+        }
+
+        return Elo.calculate(a, b, realScore, k);
     }
 }

@@ -14,6 +14,7 @@ namespace elo {
     //% k.max=40
     //% inlineInputMode=inline
     //% blockId=elo_calculate
+    //% blockSetVariable=change
     export function calculate(a: number, b: number, score: GameScore, k: number=20): number {
         return Elo.calculate(a, b, score, k);
     }
